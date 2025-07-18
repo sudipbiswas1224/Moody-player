@@ -1,0 +1,20 @@
+.facial-expression-video{
+    width: 20rem;
+    aspect-ratio: 16/9;
+    border-radius: 1rem;
+    object-fit: cover;
+    display: block;
+}
+.mood-element{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem;
+}
+.mood-element button{
+    padding: 0.7rem 1rem;
+    border-radius: .5rem;
+    background-color: rgb(72, 68, 68);
+    color: aliceblue;
+    cursor: pointer;
+}
