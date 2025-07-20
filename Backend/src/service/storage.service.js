@@ -1,4 +1,6 @@
 var ImageKit = require("imagekit");
+const mongoose = require('mongoose');
+
 
 var imagekit = new ImageKit({
     publicKey : process.env.IMAGEKIT_PUBLIC_KEY,
@@ -10,7 +12,8 @@ function uploadFile(file){
     return new Promise((res, rej)=>{
         imagekit.upload({
             file:file.buffer,
-            fileName:'Hello-cohort'
+            fileName:new mongoose.Types.ObjectId().toString(), // fileName should be unique
+            folder:'cohort-audio'
         },(error, result)=>{
             if(error){
                 rej(error);

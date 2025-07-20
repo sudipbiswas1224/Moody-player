@@ -1,9 +1,11 @@
 import React, { useRef, useEffect } from "react";
 import * as faceapi from "face-api.js";
 import './facicalExpression.css'
+import axios from 'axios';
 
-export default function FaceExpressionDetector() {
+export default function FaceExpressionDetector(params) {
   const videoRef = useRef(null);
+  const {setmoodSongs} = params;
 
   useEffect(() => {
     startVideo();
@@ -47,6 +49,12 @@ export default function FaceExpressionDetector() {
       }
     }
     console.log(mostProbableExpressionName);
+
+    axios.get(`http://localhost:3000/songs?mood=${mostProbableExpressionName}`)
+    .then(response=>{
+      console.log(response.data);
+      setmoodSongs(response.data.songs)
+    })
   };
 
   return (
